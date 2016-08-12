@@ -9,7 +9,7 @@ function drawGauge(opt) {
     if(typeof opt.divID === 'undefined')            {opt.divID="vizBox"}
     if(typeof opt.needleVal === 'undefined')        {opt.needleVal=60}
     if(typeof opt.gaugeUnits === 'undefined')       {opt.gaugeUnits="%"}
-    if(typeof opt.fixedLength === 'undefined')       {opt.fixedLength = 0}
+    if(typeof opt.formatString === 'undefined')     {opt.fixedLength = '.2f'}
 
     if(typeof opt.padding === 'undefined')          {opt.padding=0.05}
     if(typeof opt.edgeWidth === 'undefined')        {opt.edgeWidth=0.05}
@@ -57,6 +57,9 @@ function drawGauge(opt) {
     opt.tickWidthMaj = opt.tickWidthMaj * (opt.gaugeRadius/opt.ticknessGaugeBasis),
     opt.tickWidthMin = opt.tickWidthMin * (opt.gaugeRadius/opt.ticknessGaugeBasis),
     opt.labelFontSize = opt.labelFontSize * (opt.gaugeRadius/opt.ticknessGaugeBasis);
+
+    // d3 formatter
+    opt.d3format = d3.format(opt.formatString);
 
 
     //Calculate required values
@@ -343,7 +346,7 @@ function drawGauge(opt) {
         var i = d3.interpolateNumber(opt.minVal, opt.needleVal)
 
         return function(t) {
-            this.textContent = d3.format('.2n')(+(i(t))) + " " + opt.gaugeUnits;
+            this.textContent = opt.d3formatter(+(i(t))) + " " + opt.gaugeUnits;
         };
     });
 
@@ -380,7 +383,7 @@ function drawGauge(opt) {
                 var i = d3.interpolateNumber(oldVal, newVal)
 
                 return function(t) {
-                    this.textContent = d3.format('.2f')(+(i(t))) + " " + opt.gaugeUnits;
+                    this.textContent = opt.d3formatter(+(i(t))) + " " + opt.gaugeUnits;
                 };
         });
 
