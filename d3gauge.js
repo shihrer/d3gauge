@@ -380,7 +380,7 @@ function drawGauge(opt) {
                 var i = d3.interpolateNumber(oldVal, newVal)
 
                 return function(t) {
-                    this.textContent = d3.format('.2n')(+(i(t))) + " " + opt.gaugeUnits;
+                    this.textContent = d3.format('.2f')(+(i(t))) + " " + opt.gaugeUnits;
                 };
         });
 
