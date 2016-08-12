@@ -346,7 +346,7 @@ function drawGauge(opt) {
         var i = d3.interpolateNumber(opt.minVal, opt.needleVal)
 
         return function(t) {
-            this.textContent = opt.d3formatter(+(i(t))) + " " + opt.gaugeUnits;
+            this.textContent = opt.d3format(+(i(t))) + " " + opt.gaugeUnits;
         };
     });
 
@@ -383,7 +383,7 @@ function drawGauge(opt) {
                 var i = d3.interpolateNumber(oldVal, newVal)
 
                 return function(t) {
-                    this.textContent = opt.d3formatter(+(i(t))) + " " + opt.gaugeUnits;
+                    this.textContent = opt.d3format(+(i(t))) + " " + opt.gaugeUnits;
                 };
         });
 
