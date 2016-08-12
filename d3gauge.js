@@ -9,7 +9,7 @@ function drawGauge(opt) {
     if(typeof opt.divID === 'undefined')            {opt.divID="vizBox"}
     if(typeof opt.needleVal === 'undefined')        {opt.needleVal=60}
     if(typeof opt.gaugeUnits === 'undefined')       {opt.gaugeUnits="%"}
-    if(typeof opt.formatString === 'undefined')     {opt.fixedLength = '.2f'}
+    if(typeof opt.formatString === 'undefined')     {opt.formatString = '.2f'}
 
     if(typeof opt.padding === 'undefined')          {opt.padding=0.05}
     if(typeof opt.edgeWidth === 'undefined')        {opt.edgeWidth=0.05}
